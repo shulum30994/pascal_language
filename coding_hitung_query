@@ -1,0 +1,11 @@
+   query_hitung.SQL.clear;
+   query_hitung.SQL.Append('select sum(hkp) as total_hari_tkp from pekerja where regional_tk like "'+str_regional+'"');
+   query_hitung.Open;
+   query_hitung.Active:=true;
+   if not query_hitung.IsEmpty then
+   begin
+     query_hitung.First;
+     dblhari_pria:=query_hitung.FieldByName('total_hari_tkp').AsFloat;
+   end
+   else
+     dblhari_pria:=0;
